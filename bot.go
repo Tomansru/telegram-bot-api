@@ -56,11 +56,11 @@ func NewBotAPIWithClient(token string, client *http.Client) (*BotAPI, error) {
 	return bot, nil
 }
 
-func (b *BotAPI) SetAPIEndpoint(apiEndpoint string) {
-	b.apiEndpoint = apiEndpoint
+func (bot *BotAPI) SetAPIEndpoint(apiEndpoint string) {
+	bot.apiEndpoint = apiEndpoint
 }
 
-func (b *BotAPI) InitBot() (error) {
+func (bot *BotAPI) InitBot() (error) {
 	self, err := bot.GetMe()
 	if err != nil {
 		return err
