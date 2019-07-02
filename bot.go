@@ -53,18 +53,22 @@ func NewBotAPIWithClient(token string, client *http.Client) (*BotAPI, error) {
 		apiEndpoint: APIEndpoint,
 	}
 
-	self, err := bot.GetMe()
-	if err != nil {
-		return nil, err
-	}
-
-	bot.Self = self
-
 	return bot, nil
 }
 
 func (b *BotAPI) SetAPIEndpoint(apiEndpoint string) {
 	b.apiEndpoint = apiEndpoint
+}
+
+func (b *BotAPI) InitBot() (error) {
+	self, err := bot.GetMe()
+	if err != nil {
+		return err
+	}
+
+	bot.Self = self
+	
+	return nil
 }
 
 // MakeRequest makes a request to a specific endpoint with our token.
